@@ -33,6 +33,13 @@ Data paths:
 
 ### Edit/Approve step
 - UI shows AI draft summary → associate edits → hits Approve.
+
+### Scaling plan
+- Replace rules summarizer with hosted LLM (batchable) or local model (vLLM) and add retrieval over message history for better faithfulness.
+- Add auth + role-based approvals and audit log.
+- Store data in a DB (e.g., Postgres) and emit events to CRM/Helpdesk via webhook/queue.
+- Add metrics: time saved, approval rate, deflection rate; measure CSAT impact.
+
 - Approval persists editor name, timestamp, and summary. Export updated concurrently.
 
 
