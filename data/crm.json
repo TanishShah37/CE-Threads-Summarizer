@@ -1,0 +1,34 @@
+{
+  "customers": [
+    {
+      "customer_id": "C-1001",
+      "orders": ["405467-683"],
+      "tier": "Standard",
+      "entitlements": ["30-day-returns"],
+      "shipping_constraints": ["signature-required"]
+    },
+    {
+      "customer_id": "C-1002",
+      "orders": ["681480-462"],
+      "tier": "Gold",
+      "entitlements": ["expedited-support", "advanced-replacements"],
+      "shipping_constraints": ["address-verify"]
+    },
+    {
+      "customer_id": "C-1003",
+      "orders": ["762448-617", "928163-566"],
+      "tier": "Standard",
+      "entitlements": ["30-day-returns"],
+      "shipping_constraints": []
+    },
+    {
+      "customer_id": "C-1004",
+      "orders": ["627506-327"],
+      "tier": "Silver",
+      "entitlements": ["extended-returns"],
+      "shipping_constraints": ["po-box-blocked"]
+    }
+  ]
+}
+
+

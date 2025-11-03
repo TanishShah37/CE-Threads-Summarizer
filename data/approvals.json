@@ -1,0 +1,14 @@
+{
+  "CE-928163-566": {
+    "approved_summary": "- Order: 928163-\n- Product: Vacuum Cleaner\n- Intent: Damaged/Defective item\n- Customer requested: Replac\n- Status: Resolved/Approved\n- Next steps: Request photos if not provided; offer refund or replacementss",
+    "approver": "test",
+    "approved_at": "2025-11-03T16:41:34.434285Z",
+    "approved_intent": "Damaged/Defective item",
+    "approved_status": "Resolved/Approved"
+  },
+  "CE-405467-683": {
+    "approved_summary": "- Order: 405467-\n- Product: LED Monitor\n- Intent: Damaged/Defective item\n- Customer requested: Unclear\n- Status: Open\n- Next steps: Request photos if not provided; offer refund or replacementss",
+    "approver": "ce_associate",
+    "approved_at": "2025-11-03T16:21:30.188139Z"
+  }
+}

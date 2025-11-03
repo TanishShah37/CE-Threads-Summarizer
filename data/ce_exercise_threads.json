@@ -1,0 +1,269 @@
+{
+  "version": "v2",
+  "generated_at": "2025-09-15T10:39:29",
+  "description": "CE email threads for SDM-CE exercise; messages have 1–50 words; includes outbound address confusion thread.",
+  "threads": [
+    {
+      "thread_id": "CE-405467-683",
+      "topic": "Damaged product on arrival",
+      "subject": "Order 405467-683: Damaged item received",
+      "initiated_by": "customer",
+      "order_id": "405467-683",
+      "product": "LED Monitor",
+      "messages": [
+        {
+          "id": "m1",
+          "sender": "customer",
+          "timestamp": "2025-09-12T06:39:29",
+          "body": "Hello, my item arrived damaged. Order 405467-683 LED Monitor. Pending confirm photos question credit 7732 tracking broken packaging stock status order."
+        },
+        {
+          "id": "m2",
+          "sender": "company",
+          "timestamp": "2025-09-12T06:49:29",
+          "body": "Please decline 3206 stock when reroute delivery help 3580 summary size delayed warehouse address tomorrow credit today credit decline size please summary photos why policy."
+        },
+        {
+          "id": "m3",
+          "sender": "customer",
+          "timestamp": "2025-09-12T06:59:29",
+          "body": "Broken 2965 color 4739."
+        },
+        {
+          "id": "m4",
+          "sender": "company",
+          "timestamp": "2025-09-12T07:09:29",
+          "body": "Today hello warehouse arrived today delivery decline color tomorrow."
+        },
+        {
+          "id": "m5",
+          "sender": "customer",
+          "timestamp": "2025-09-12T07:19:29",
+          "body": "8026 address please arrived refund card return issue."
+        },
+        {
+          "id": "m6",
+          "sender": "company",
+          "timestamp": "2025-09-12T07:29:29",
+          "body": "Resolved arrived carrier stuck urgent decline credit delivery size when routing routing refund refund sorry approve stock today address size when summary 1513 defective return lost. Order 405467-683 LED Monitor."
+        },
+        {
+          "id": "m7",
+          "sender": "customer",
+          "timestamp": "2025-09-12T07:39:29",
+          "body": "Tomorrow wrong return where 9907 delivery photos delayed update arrived address approve resolved 4090 where order address 6529 refund policy packaging lost arrived issue number ticket ticket warehouse size photos refund order response routing reroute response refund response question lost 1640 question wrong return approve."
+        },
+        {
+          "id": "m8",
+          "sender": "company",
+          "timestamp": "2025-09-12T07:49:29",
+          "body": "When color help color arrived routing routing address 3047 urgent update number response issue 2566 delayed policy 7935 urgent order status 9023 policy 6078 packaging 3063 why defective urgent number 7989 status urgent 7836 today size routing please please tracking issue partial stuck 277. Order 405467-683 LED Monitor."
+        }
+      ]
+    },
+    {
+      "thread_id": "CE-681480-462",
+      "topic": "Late delivery inquiry",
+      "subject": "Order 681480-462: Where is my order?",
+      "initiated_by": "customer",
+      "order_id": "681480-462",
+      "product": "LED Monitor",
+      "messages": [
+        {
+          "id": "m1",
+          "sender": "customer",
+          "timestamp": "2025-08-28T10:39:29",
+          "body": "Hello, my shipment is delayed. Order 681480-462 LED Monitor. Card 5190 status where pending."
+        },
+        {
+          "id": "m2",
+          "sender": "company",
+          "timestamp": "2025-08-28T10:49:29",
+          "body": "Wrong size how urgent."
+        },
+        {
+          "id": "m3",
+          "sender": "customer",
+          "timestamp": "2025-08-28T10:59:29",
+          "body": "Where please how size where tomorrow refund replacement resolved warehouse confirm wrong tracking size packaging routing sorry 267 when attached attached replacement 1905 attached credit sorry 2784 hello address carrier urgent return partial tracking urgent carrier delayed routing."
+        },
+        {
+          "id": "m4",
+          "sender": "company",
+          "timestamp": "2025-08-28T11:09:29",
+          "body": "Address status 174 question stock color address ticket."
+        },
+        {
+          "id": "m5",
+          "sender": "customer",
+          "timestamp": "2025-08-28T11:19:29",
+          "body": "Delayed."
+        },
+        {
+          "id": "m6",
+          "sender": "company",
+          "timestamp": "2025-08-28T11:29:29",
+          "body": "Packaging photos attached color why 6959 approve lost please please reroute stuck how size card carrier address sorry please delivery status order thanks credit return arrived packaging card response return question decline carrier card case 4388 resolved response thanks 1165 case reroute 8997 when question tracking tomorrow decline tomorrow."
+        },
+        {
+          "id": "m7",
+          "sender": "customer",
+          "timestamp": "2025-08-28T11:39:29",
+          "body": "Size policy update 2408 size photos sorry pending 4562 ticket 4548 when please policy summary case credit warehouse help reroute delivery delayed status 5177 question pending tracking response case photos issue sorry hello why 446 pending 5725 6237 9811 response attached where refund when confirm 2342 card sorry 6621."
+        }
+      ]
+    },
+    {
+      "thread_id": "CE-762448-617",
+      "topic": "Wrong color/size variant",
+      "subject": "Order 762448-617: Wrong variant received",
+      "initiated_by": "customer",
+      "order_id": "762448-617",
+      "product": "Vacuum Cleaner",
+      "messages": [
+        {
+          "id": "m1",
+          "sender": "customer",
+          "timestamp": "2025-08-20T08:39:29",
+          "body": "I received the wrong color or size. Order 762448-617 Vacuum Cleaner. Why packaging thanks."
+        },
+        {
+          "id": "m2",
+          "sender": "company",
+          "timestamp": "2025-08-20T08:49:29",
+          "body": "Delayed why attached how."
+        },
+        {
+          "id": "m3",
+          "sender": "customer",
+          "timestamp": "2025-08-20T08:59:29",
+          "body": "Return."
+        },
+        {
+          "id": "m4",
+          "sender": "company",
+          "timestamp": "2025-08-20T09:09:29",
+          "body": "Credit arrived how today partial arrived card refund 7770 8190 refund policy reroute pending hello resolved wrong 6465 packaging thanks delayed partial color issue 1436 policy resolved carrier pending where stuck return summary arrived number hello."
+        },
+        {
+          "id": "m5",
+          "sender": "customer",
+          "timestamp": "2025-08-20T09:19:29",
+          "body": "Attached 1909 why return carrier warehouse arrived 1186 carrier size 2489 when policy pending reroute color attached pending packaging 5675 case tracking card refund credit status question number tracking hello refund color decline refund warehouse reroute color lost wrong approve 4661 routing carrier partial photos."
+        },
+        {
+          "id": "m6",
+          "sender": "company",
+          "timestamp": "2025-08-20T09:29:29",
+          "body": "Replacement replacement resolved lost delayed stock when 8630 question status order number."
+        },
+        {
+          "id": "m7",
+          "sender": "customer",
+          "timestamp": "2025-08-20T09:39:29",
+          "body": "Photos partial arrived pending refund response urgent address response 3773 arrived how arrived update help refund carrier sorry delivery wrong issue how 3395 defective when where today issue warehouse delayed broken update 5778 7226 refund approve approve pending 8787."
+        }
+      ]
+    },
+    {
+      "thread_id": "CE-627506-327",
+      "topic": "Return/refund request",
+      "subject": "Order 627506-327: Return or refund request",
+      "initiated_by": "customer",
+      "order_id": "627506-327",
+      "product": "Headphones",
+      "messages": [
+        {
+          "id": "m1",
+          "sender": "customer",
+          "timestamp": "2025-08-21T10:39:29",
+          "body": "I want to return this item and request a refund. Order 627506-327 Headphones. Issue warehouse refund attached replacement delayed approve."
+        },
+        {
+          "id": "m2",
+          "sender": "company",
+          "timestamp": "2025-08-21T10:49:29",
+          "body": "Question number refund case card delivery arrived confirm delivery tomorrow decline lost stock defective broken return update card 8601."
+        },
+        {
+          "id": "m3",
+          "sender": "customer",
+          "timestamp": "2025-08-21T10:59:29",
+          "body": "Routing ticket 6192 8790 where defective address stuck partial credit 9344 size where ticket hello credit stuck attached tomorrow carrier please delayed 8284 urgent where attached approve response refund sorry when card summary update stuck return refund."
+        },
+        {
+          "id": "m4",
+          "sender": "company",
+          "timestamp": "2025-08-21T11:09:29",
+          "body": "Packaging return 8852 card partial defective 8247 please packaging warehouse size 2152 6158 how ticket refund pending photos 9340 ticket 4157 update."
+        },
+        {
+          "id": "m5",
+          "sender": "customer",
+          "timestamp": "2025-08-21T11:19:29",
+          "body": "Carrier return 922 color 7474 response."
+        },
+        {
+          "id": "m6",
+          "sender": "company",
+          "timestamp": "2025-08-21T11:29:29",
+          "body": "Tomorrow 6679 today photos routing 4367 issue 3737 7144 sorry update arrived update 8171 hello question defective stuck hello carrier defective."
+        }
+      ]
+    },
+    {
+      "thread_id": "CE-928163-566",
+      "topic": "Outbound: address confirmation confusion",
+      "subject": "Action required: confirm your address for Order 928163-566",
+      "initiated_by": "company",
+      "order_id": "928163-566",
+      "product": "Vacuum Cleaner",
+      "messages": [
+        {
+          "id": "m1",
+          "sender": "company",
+          "timestamp": "2025-08-20T22:39:29",
+          "body": "Hello, we need to confirm your shipping address for Order 928163-566. Warehouse address 5323 wrong broken broken broken."
+        },
+        {
+          "id": "m2",
+          "sender": "customer",
+          "timestamp": "2025-08-20T22:49:29",
+          "body": "I'm confused about which address you have on file Thanks hello sorry tracking carrier carrier packaging policy 8898 ticket replacement defective routing confirm."
+        },
+        {
+          "id": "m3",
+          "sender": "company",
+          "timestamp": "2025-08-20T22:59:29",
+          "body": "Resolved 8598 address sorry response wrong address status issue size policy 8559 refund issue help sorry pending thanks 6046 ticket 7629 decline address broken defective credit 7863 return resolved issue why issue refund resolved when 8972 thanks lost refund please where summary wrong replacement thanks packaging question attached address."
+        },
+        {
+          "id": "m4",
+          "sender": "customer",
+          "timestamp": "2025-08-20T23:09:29",
+          "body": "Refund 7979 defective hello response broken carrier decline stock stock resolved reroute sorry today approve."
+        },
+        {
+          "id": "m5",
+          "sender": "company",
+          "timestamp": "2025-08-20T23:19:29",
+          "body": "Routing status."
+        },
+        {
+          "id": "m6",
+          "sender": "customer",
+          "timestamp": "2025-08-20T23:29:29",
+          "body": "Case 1543 reroute lost color replacement address."
+        },
+        {
+          "id": "m7",
+          "sender": "company",
+          "timestamp": "2025-08-20T23:39:29",
+          "body": "Case pending return help delivery 6463 ticket 2411 broken return wrong when thanks when delayed resolved how 3496 replacement delayed address delivery policy policy reroute size 2171 refund today broken size 3288 refund credit arrived packaging help approve case number refund replacement stock delayed order 5643 why card."
+        }
+      ]
+    }
+  ]
+}
+
+

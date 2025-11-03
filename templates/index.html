@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CE Threads Summarizer - Approve Workflow</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>CE Threads Summarizer</h1>
+      <p>Draft summaries → Edit → Approve → Export</p>
+    </header>
+
+    <main class="container">
+      <aside id="thread-list">
+        <h2>Threads</h2>
+        <div id="threads"></div>
+      </aside>
+
+      <section id="details">
+        <div class="panel metrics-panel">
+          <h3>Metrics</h3>
+          <div id="metrics" class="metrics-grid"></div>
+        </div>
+        <div id="meta" class="meta-card"></div>
+        <div class="panel ai-panel">
+          <h3>AI Draft Summary</h3>
+          <pre id="ai-summary"></pre>
+        </div>
+        <div class="panel edit-panel">
+          <h3>Edit Summary</h3>
+          <textarea id="edit-summary" rows="12" placeholder="Edit the summary before approving..."></textarea>
+          <div class="controls">
+            <input type="text" id="approver" placeholder="Your name" />
+            <button id="approve-btn">Approve</button>
+            <span id="status"></span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="export-bar">
+      <a class="btn secondary" href="/export/json">Download JSON</a>
+      <a class="btn secondary" href="/export/csv">Download CSV</a>
+    </div>
+
+    <script src="/static/app.js"></script>
+  </body>
+  </html>
+
+

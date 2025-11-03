@@ -1,0 +1,89 @@
+[
+  {
+    "thread_id": "CE-405467-683",
+    "order_id": "405467-683",
+    "product": "LED Monitor",
+    "intent": "Damaged/Defective item",
+    "status": "Open",
+    "approved_summary": "- Order: 405467-\n- Product: LED Monitor\n- Intent: Damaged/Defective item\n- Customer requested: Unclear\n- Status: Open\n- Next steps: Request photos if not provided; offer refund or replacementss",
+    "approved_intent": null,
+    "approved_status": null,
+    "customer_id": "C-1001",
+    "customer_tier": "Standard",
+    "entitlements": [
+      "30-day-returns"
+    ],
+    "shipping_constraints": [
+      "signature-required"
+    ]
+  },
+  {
+    "thread_id": "CE-681480-462",
+    "order_id": "681480-462",
+    "product": "LED Monitor",
+    "intent": "Delivery delay / tracking",
+    "status": "Resolved/Approved",
+    "approved_summary": null,
+    "approved_intent": null,
+    "approved_status": null,
+    "customer_id": "C-1002",
+    "customer_tier": "Gold",
+    "entitlements": [
+      "expedited-support",
+      "advanced-replacements"
+    ],
+    "shipping_constraints": [
+      "address-verify"
+    ]
+  },
+  {
+    "thread_id": "CE-762448-617",
+    "order_id": "762448-617",
+    "product": "Vacuum Cleaner",
+    "intent": "Wrong variant received",
+    "status": "Resolved/Approved",
+    "approved_summary": null,
+    "approved_intent": null,
+    "approved_status": null,
+    "customer_id": "C-1003",
+    "customer_tier": "Standard",
+    "entitlements": [
+      "30-day-returns"
+    ],
+    "shipping_constraints": []
+  },
+  {
+    "thread_id": "CE-627506-327",
+    "order_id": "627506-327",
+    "product": "Headphones",
+    "intent": "Delivery delay / tracking",
+    "status": "Open",
+    "approved_summary": null,
+    "approved_intent": null,
+    "approved_status": null,
+    "customer_id": "C-1004",
+    "customer_tier": "Silver",
+    "entitlements": [
+      "extended-returns"
+    ],
+    "shipping_constraints": [
+      "po-box-blocked"
+    ]
+  },
+  {
+    "thread_id": "CE-928163-566",
+    "order_id": "928163-566",
+    "product": "Vacuum Cleaner",
+    "intent": "Damaged/Defective item",
+    "status": "Resolved/Approved",
+    "approved_summary": "- Order: 928163-\n- Product: Vacuum Cleaner\n- Intent: Damaged/Defective item\n- Customer requested: Replac\n- Status: Resolved/Approved\n- Next steps: Request photos if not provided; offer refund or replacementss",
+    "approved_intent": "Damaged/Defective item",
+    "approved_status": "Resolved/Approved",
+    "customer_id": "C-1003",
+    "customer_tier": "Standard",
+    "entitlements": [
+      "30-day-returns"
+    ],
+    "shipping_constraints": []
+  }
+]
