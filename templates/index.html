@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,10 +8,212 @@
   <link rel="stylesheet" href="/static/styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
 </head>
+
 <body>
   <header class="app-header">
+    <!-- ============================================================
+  ADD THIS BLOCK inside <body>, immediately after <header ...>
+  and before <main ...>
+  ============================================================ -->
+
+    <div id="api-key-overlay" class="api-modal-overlay hidden">
+      <div class="api-modal-card">
+        <div class="api-modal-icon">🔑</div>
+        <h2 class="api-modal-title">Generative AI Setup</h2>
+        <p id="api-key-message" class="api-modal-msg">
+          No ANTHROPIC_API_KEY found. Enter your key below to enable live Generative AI summaries.
+          Without it, the LLM engine uses high-fidelity mock responses.
+        </p>
+        <p class="api-modal-hint">
+          Get your key at
+          <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">
+            console.anthropic.com
+          </a>
+          — or add it manually to a <code>.env</code> file in the project root:
+          <code>ANTHROPIC_API_KEY=sk-ant-...</code>
+        </p>
+        <input type="password" id="api-key-input" class="api-modal-input" placeholder="sk-ant-api03-..."
+          autocomplete="off" />
+        <div class="api-modal-actions">
+          <button id="api-key-save-btn" class="btn-approve" onclick="submitAPIKey()">
+            Save &amp; Activate
+          </button>
+          <button class="btn-skip" onclick="skipAPIKey()">
+            Skip — use mock responses
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ============================================================
+  ADD THESE STYLES to styles.css
+  ============================================================ -->
+    <style id="modal-styles-snippet">
+      /* ---- API Key Modal ---- */
+      .api-modal-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 999;
+        background: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(6px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .api-modal-overlay.hidden {
+        display: none;
+      }
+
+      .api-modal-card {
+        background: rgba(15, 23, 42, 0.97);
+        border: 1px solid rgba(99, 102, 241, 0.35);
+        border-radius: 20px;
+        padding: 36px 40px;
+        max-width: 480px;
+        width: 100%;
+        box-shadow: 0 0 60px rgba(99, 102, 241, 0.2);
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .api-modal-icon {
+        font-size: 32px;
+        text-align: center;
+      }
+
+      .api-modal-title {
+        font-family: var(--font-header);
+        font-size: 20px;
+        font-weight: 800;
+        text-align: center;
+        color: #fff;
+      }
+
+      .api-modal-msg {
+        font-size: 13px;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        text-align: center;
+      }
+
+      .api-modal-hint {
+        font-size: 12px;
+        color: var(--text-secondary);
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        padding: 10px 14px;
+        line-height: 1.7;
+      }
+
+      .api-modal-hint a {
+        color: var(--accent-cyan);
+        text-decoration: none;
+      }
+
+      .api-modal-hint a:hover {
+        text-decoration: underline;
+      }
+
+      .api-modal-hint code {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        background: rgba(255, 255, 255, 0.06);
+        padding: 1px 5px;
+        border-radius: 4px;
+        color: #c7d2fe;
+      }
+
+      .api-modal-input {
+        width: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(99, 102, 241, 0.35);
+        border-radius: 10px;
+        color: #fff;
+        font-family: var(--font-mono);
+        font-size: 13px;
+        padding: 10px 14px;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+
+      .api-modal-input:focus {
+        border-color: var(--accent-indigo);
+        box-shadow: 0 0 10px rgba(99, 102, 241, 0.25);
+      }
+
+      .api-modal-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .btn-skip {
+        background: transparent;
+        border: 1px solid var(--panel-border);
+        color: var(--text-secondary);
+        padding: 8px 16px;
+        font-size: 12px;
+        font-weight: 600;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-align: center;
+      }
+
+      .btn-skip:hover {
+        background: rgba(255, 255, 255, 0.04);
+        color: #fff;
+      }
+
+      /* ---- Toast Notifications ---- */
+      .toast {
+        position: fixed;
+        bottom: 28px;
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
+        background: rgba(15, 23, 42, 0.97);
+        border: 1px solid var(--panel-border);
+        border-radius: 10px;
+        padding: 12px 20px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text-primary);
+        z-index: 1000;
+        opacity: 0;
+        transition: opacity 0.3s, transform 0.3s;
+        max-width: 420px;
+        text-align: center;
+        pointer-events: none;
+      }
+
+      .toast.visible {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      .toast-success {
+        border-color: rgba(16, 185, 129, 0.4);
+        color: var(--accent-green);
+      }
+
+      .toast-info {
+        border-color: rgba(6, 182, 212, 0.4);
+        color: var(--accent-cyan);
+      }
+
+      .toast-error {
+        border-color: rgba(249, 115, 22, 0.4);
+        color: var(--accent-orange);
+      }
+    </style>
     <div class="header-logo">
       <div class="logo-icon"></div>
       <div class="logo-text">
@@ -105,7 +308,7 @@
       <!-- Workstation Summary panel -->
       <div class="panel summary-workspace">
         <h3 class="panel-title">Copilot Workstation</h3>
-        
+
         <!-- Step 1: Engine Selector -->
         <div class="engine-toggle-container">
           <button id="engine-rules-btn" class="engine-btn active" data-engine="rules">Rules-Based</button>
@@ -201,4 +404,5 @@
 
   <script src="/static/app.js"></script>
 </body>
+
 </html>

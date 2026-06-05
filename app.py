@@ -416,6 +416,52 @@ def api_metrics():
         "csat_impact": round(approved_count * 0.4, 1) # simple model proxy
     })
 
+# ---------------------------------------------------------------
+# ADD THESE TWO ROUTES TO app.py  (paste after the existing routes,
+# before the `if __name__ == "__main__":` block)
+# ---------------------------------------------------------------
+
+@app.get("/api/check_key")
+def api_check_key():
+    """Returns whether ANTHROPIC_API_KEY is currently set in the environment."""
+    key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
+    return jsonify({"key_set": bool(key)})
+
+@app.post("/api/set_key")
+def api_set_key():
+    """
+    Accepts an API key from the frontend, writes it to .env,
+    and sets it in the current process environment so llm.py picks it up
+    immediately without a server restart.
+    """
+    data = request.get_json(force=True)
+    key = (data.get("api_key") or "").strip()
+
+    if not key:
+        return jsonify({"ok": False, "error": "Empty key"}), 400
+
+    # Write / overwrite .env file
+    env_path = os.path.join(APP_ROOT, ".env")
+    try:
+        # Preserve any existing lines that aren't ANTHROPIC_API_KEY
+        existing_lines = []
+        if os.path.exists(env_path):
+            with open(env_path, "r") as f:
+                existing_lines = [
+                    line for line in f.readlines()
+                    if not line.startswith("ANTHROPIC_API_KEY")
+                ]
+        existing_lines.append(f"ANTHROPIC_API_KEY={key}\n")
+        with open(env_path, "w") as f:
+            f.writelines(existing_lines)
+    except OSError as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+    # Set in current process environment so llm.py picks it up immediately
+    os.environ["ANTHROPIC_API_KEY"] = key
+
+    return jsonify({"ok": True})
+
 if __name__ == "__main__":
     ensure_dirs()
     app.run(host="0.0.0.0", port=8000, debug=True)
