@@ -1,52 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CE Threads Summarizer - Approve Workflow</title>
-    <link rel="stylesheet" href="/static/styles.css" />
-  </head>
-  <body>
-    <header>
-      <h1>CE Threads Summarizer</h1>
-      <p>Draft summaries → Edit → Approve → Export</p>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CE Support Workstation - AI Summarizer & Actions</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-logo">
+      <div class="logo-icon"></div>
+      <div class="logo-text">
+        <h1>CE Support Workstation</h1>
+        <p>AI Copilot, CRM Analytics & Playbook Automations</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <a class="btn-export" href="/export/json">Export JSON</a>
+      <a class="btn-export secondary" href="/export/csv">Export CSV</a>
+    </div>
+  </header>
 
-    <main class="container">
-      <aside id="thread-list">
-        <h2>Threads</h2>
-        <div id="threads"></div>
-      </aside>
-
-      <section id="details">
-        <div class="panel metrics-panel">
-          <h3>Metrics</h3>
-          <div id="metrics" class="metrics-grid"></div>
-        </div>
-        <div id="meta" class="meta-card"></div>
-        <div class="panel ai-panel">
-          <h3>AI Draft Summary</h3>
-          <pre id="ai-summary"></pre>
-        </div>
-        <div class="panel edit-panel">
-          <h3>Edit Summary</h3>
-          <textarea id="edit-summary" rows="12" placeholder="Edit the summary before approving..."></textarea>
-          <div class="controls">
-            <input type="text" id="approver" placeholder="Your name" />
-            <button id="approve-btn">Approve</button>
-            <span id="status"></span>
+  <main class="app-container">
+    <!-- COLUMN 1: LEFT SIDEBAR (Metrics & Threads) -->
+    <aside class="col-left">
+      <!-- KPI Stats -->
+      <section class="panel metrics-panel">
+        <h3 class="panel-title">Operations Metrics</h3>
+        <div id="metrics" class="metrics-grid">
+          <div class="metric-card">
+            <span class="value" id="kpi-total">-</span>
+            <span class="label">Total Tickets</span>
+          </div>
+          <div class="metric-card">
+            <span class="value" id="kpi-approved">-</span>
+            <span class="label">Approved</span>
+          </div>
+          <div class="metric-card">
+            <span class="value" id="kpi-rate">-</span>
+            <span class="label">Approval Rate</span>
+          </div>
+          <div class="metric-card">
+            <span class="value" id="kpi-resolved">-</span>
+            <span class="label">Resolved</span>
+          </div>
+          <div class="metric-card">
+            <span class="value" id="kpi-deflected">-</span>
+            <span class="label">Self-Deflected</span>
+          </div>
+          <div class="metric-card">
+            <span class="value" id="kpi-saved">-</span>
+            <span class="label">Hours Saved</span>
           </div>
         </div>
       </section>
-    </main>
 
-    <div class="export-bar">
-      <a class="btn secondary" href="/export/json">Download JSON</a>
-      <a class="btn secondary" href="/export/csv">Download CSV</a>
-    </div>
+      <!-- Thread List -->
+      <section class="panel threads-panel">
+        <h3 class="panel-title">Active Mail Inbox</h3>
+        <div id="threads-container" class="thread-list"></div>
+      </section>
+    </aside>
 
-    <script src="/static/app.js"></script>
-  </body>
-  </html>
+    <!-- COLUMN 2: CENTER (Thread & Customer Context) -->
+    <section class="col-center">
+      <!-- CRM Profile -->
+      <div id="crm-card" class="panel crm-panel">
+        <h3 class="panel-title">CRM Customer Record</h3>
+        <div id="crm-profile" class="crm-profile-grid">
+          <div class="crm-loading">Select a thread to load customer CRM profile</div>
+        </div>
+      </div>
 
+      <!-- Chronological Thread Visualizer -->
+      <div class="panel chat-panel">
+        <div class="chat-header">
+          <h3 class="panel-title">Chronological Message History</h3>
+          <div class="search-box">
+            <input type="text" id="thread-search" placeholder="Search keywords..." />
+            <button id="search-next-btn">Next</button>
+            <span id="search-count" class="search-count-label"></span>
+          </div>
+        </div>
+        <div id="chat-messages" class="chat-viewport">
+          <div class="chat-empty">Select a conversation thread to view details</div>
+        </div>
+      </div>
 
+      <!-- Playbook Actions -->
+      <div class="panel playbooks-panel">
+        <h3 class="panel-title">CRM Playbook Actions</h3>
+        <div id="playbook-actions-container" class="actions-grid">
+          <div class="playbook-empty">No actions available. Select a thread to load playbook.</div>
+        </div>
+        <div id="actions-log" class="actions-log-container"></div>
+      </div>
+    </section>
+
+    <!-- COLUMN 3: RIGHT (Summary & Approvals Panel + ROI Outcomes) -->
+    <section class="col-right">
+      <!-- Workstation Summary panel -->
+      <div class="panel summary-workspace">
+        <h3 class="panel-title">Copilot Workstation</h3>
+        
+        <!-- Step 1: Engine Selector -->
+        <div class="engine-toggle-container">
+          <button id="engine-rules-btn" class="engine-btn active" data-engine="rules">Rules-Based</button>
+          <button id="engine-llm-btn" class="engine-btn" data-engine="llm">Generative AI</button>
+        </div>
+
+        <!-- Step 2: AI Draft (collapsible/read-only) -->
+        <div class="ai-draft-container">
+          <div class="ai-draft-header">
+            <span>AI Copilot Original Draft</span>
+            <span id="active-engine-badge" class="engine-badge-tag">Rules-Based</span>
+          </div>
+          <pre id="ai-summary" class="ai-draft-view">AI summary draft loading...</pre>
+        </div>
+
+        <!-- Step 3: Editable Area -->
+        <div class="editor-container">
+          <label for="edit-summary" class="editor-label">
+            <span>Associate Workspace</span>
+            <span id="char-count" class="char-count-badge">0 chars</span>
+          </label>
+          <textarea id="edit-summary" placeholder="Refine and edit the draft summary here..." rows="8"></textarea>
+        </div>
+
+        <!-- Step 4: Diff Viewer -->
+        <div class="diff-control-group">
+          <button id="toggle-diff-btn" class="btn-diff">Show Changes</button>
+          <div id="diff-view" class="diff-output-panel hidden"></div>
+        </div>
+
+        <!-- Step 5: Approval -->
+        <div class="approval-card">
+          <div class="approver-input-group">
+            <input type="text" id="approver" placeholder="Enter associate name" value="ce_associate" />
+            <button id="approve-btn" class="btn-approve">Approve & Save</button>
+          </div>
+          <div id="status" class="status-banner"></div>
+        </div>
+      </div>
+
+      <!-- ROI Calculator -->
+      <div class="panel roi-panel">
+        <h3 class="panel-title">Business Impact Calculator</h3>
+        <div class="roi-sliders">
+          <div class="slider-group">
+            <label>
+              <span>Daily Ticket Volume</span>
+              <span id="slider-vol-value" class="slider-num">150</span>
+            </label>
+            <input type="range" id="slider-vol" min="10" max="500" value="150" />
+          </div>
+          <div class="slider-group">
+            <label>
+              <span>Hourly Wage (Fully Loaded)</span>
+              <span id="slider-wage-value" class="slider-num">$35</span>
+            </label>
+            <input type="range" id="slider-wage" min="15" max="80" value="35" />
+          </div>
+          <div class="slider-group">
+            <label>
+              <span>Minutes Saved per Ticket</span>
+              <span id="slider-time-value" class="slider-num">8 min</span>
+            </label>
+            <input type="range" id="slider-time" min="2" max="15" value="8" />
+          </div>
+        </div>
+
+        <div class="roi-metrics">
+          <div class="roi-item">
+            <span class="roi-val" id="roi-hours-daily">-</span>
+            <span class="roi-lbl">Daily Hours Saved</span>
+          </div>
+          <div class="roi-item">
+            <span class="roi-val" id="roi-hours-annual">-</span>
+            <span class="roi-lbl">Annual Hours Saved</span>
+          </div>
+          <div class="roi-item highlight">
+            <span class="roi-val" id="roi-savings-annual">-</span>
+            <span class="roi-lbl">Annual Labor Savings</span>
+          </div>
+          <div class="roi-item">
+            <span class="roi-val" id="roi-ebitda">-</span>
+            <span class="roi-lbl">EBITDA Contribution</span>
+          </div>
+          <div class="roi-item highlight-alt">
+            <span class="roi-val" id="roi-csat">-</span>
+            <span class="roi-lbl">Estimated CSAT Lift</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

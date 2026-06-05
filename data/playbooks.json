@@ -1,0 +1,26 @@
+{
+  "refund_request": [
+    "Issue Refund (Stripe mock)",
+    "Log Refund Note"
+  ],
+  "replacement_order": [
+    "Trigger Replacement (Shopify mock)",
+    "Generate Label"
+  ],
+  "shipping_delay": [
+    "Request Carrier Update",
+    "Escalate to Tier 2"
+  ],
+  "billing_dispute": [
+    "Freeze Account Action",
+    "Forward to Finance"
+  ],
+  "technical_issue": [
+    "Escalate to Tier 2",
+    "Log Tech Ticket"
+  ],
+  "general_inquiry": [
+    "Send Template Reply",
+    "Log Inquiry Note"
+  ]
+}
